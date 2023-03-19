@@ -1,0 +1,28 @@
+{
+  "name": "github-activity",
+  "version": "1.0.0",
+  "description": "CLI commands that will help to prepare commits to adjust Github activity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgalkin/github-activity.git"
+  },
+  "keywords": [
+    "github",
+    "activity",
+    "creative",
+    "git-commit"
+  ],
+  "author": "Alex Halkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexgalkin/github-activity/issues"
+  },
+  "homepage": "https://github.com/alexgalkin/github-activity#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.3"
+  }
+}
