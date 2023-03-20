@@ -2,8 +2,11 @@
 
 const fs    = require("fs");
 const masks = require("./assets/masks");
+const os = require("os");
+const path = require("path");
 
-const DEFAULT_OUTPUT_FILE = "github-commits.sh";
+const tempDir = os.tmpdir(); // /tmp
+const DEFAULT_OUTPUT_FILE = path.join(tempDir, "github-commits.sh");
 
 class GithubActivity  {
   

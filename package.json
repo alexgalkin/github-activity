@@ -1,6 +1,6 @@
 {
   "name": "github-activity",
-  "version": "1.0.0",
+  "version": "0.8.1",
   "description": "CLI commands that will help to prepare commits to adjust Github activity",
   "main": "index.js",
   "scripts": {
