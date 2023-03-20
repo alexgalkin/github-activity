@@ -45,13 +45,13 @@ Explanation: Each items of the array is specific instruction.
 
 If we have `let startDate = "2022-01-09 11:15:30";` and `let mask = [{c:8,l:2}, {s:2}, {c:1,l:3}]` then script will generate commits for the following days:
 
-`2022-01-09` - `8` commits
-`2022-01-10` - `8` commits
-`2022-01-11` - `0` commits (skip)
-`2022-01-12` - `0` commits (skip)
-`2022-01-13` - `1` commit
-`2022-01-14` - `1` commit
-`2022-01-15` - `1` commit
+- `2022-01-09` - `8` commits
+- `2022-01-10` - `8` commits
+- `2022-01-11` - `0` commits (skip)
+- `2022-01-12` - `0` commits (skip)
+- `2022-01-13` - `1` commit
+- `2022-01-14` - `1` commit
+- `2022-01-15` - `1` commit
 
 ## Output
 
