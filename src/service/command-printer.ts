@@ -22,7 +22,6 @@ function getCommitMessage(date: Date, message: string) {
 
 function print(outputFile: string, input: string) {
     fs.appendFileSync(outputFile, input + "\r\n");
-    //console.log(input);
 }
 
 function printStartMessage(outputFile: string) {
@@ -82,8 +81,8 @@ function printCommands(
     printStartMessage(outputFile);
 
     let currentDate: GithubDate = new GithubDate(startDate);
-    let fileName: string = ''
-    let message: string = ''
+    let fileName: string = "";
+    let message: string = "";
 
     for (let i = 0; i < mask.length; i++) {
         if (mask[i].s) {
