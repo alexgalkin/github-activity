@@ -1,40 +1,34 @@
 "use strict";
 
 const fs = require("fs");
+const msg = require("./../assets/messages");
+const files = require("./../assets/files");
 
 function getRandomNumber(max: number): number {
     return Math.floor(Math.random() * max);
 }
 
 function getTextFileName() {
-    const fileNames = [
-        "README.md",
-        "CHANGELOG.md",
-        "DESCRIPTION.txt",
-        "LICENSE.md",
-        "app-notes.txt",
-    ];
+    const fileNames = files;
     const randId = getRandomNumber(fileNames.length);
     return fileNames[randId];
 }
 
-function getCommitMessage(date: Date) {
+function getCommitMessage(date: Date, message: string) {
     return `git commit --date='${date.toLocaleString(
         "en-US"
-    )}' -m '${getNextMessage()}'`;
+    )}' -m '${message}'`;
 }
 
 function print(outputFile: string, input: string) {
     fs.appendFileSync(outputFile, input + "\r\n");
-    console.log(input);
+    //console.log(input);
 }
 
 function printStartMessage(outputFile: string) {
-    console.log('print start message')
-    fs.writeFileSync(
-        outputFile,
-        "# :::::: Commands to update Github activity update ::::::::\r\n"
-    );
+    console.log("Output file: ", outputFile);
+
+    fs.writeFileSync(outputFile, "#!/bin/bash \r\n");
 
     print(outputFile, "# :::::::::::::::::::::::::::::::::::::::::::: #");
 }
@@ -56,21 +50,13 @@ function getGitAddCommand(): string {
 }
 
 function getNextMessage() {
-    const messages = [
-        "Added README.md",
-        "Fixed typo",
-        "Made minor updates",
-        "Fixed critical issue",
-        "Added description",
-        "Updated title",
-    ];
-
+    const messages = msg;
     const randId = getRandomNumber(messages.length);
     return messages[randId];
 }
 
-function getEchoCommand() {
-    return `echo "${getNextMessage()}" >> ${getTextFileName()}`;
+function getEchoCommand(message: string, fileName: string) {
+    return `echo "${message}" >> ${getTextFileName()}`;
 }
 
 function printFinalMessage(outputFile: string) {
@@ -96,6 +82,8 @@ function printCommands(
     printStartMessage(outputFile);
 
     let currentDate: GithubDate = new GithubDate(startDate);
+    let fileName: string = ''
+    let message: string = ''
 
     for (let i = 0; i < mask.length; i++) {
         if (mask[i].s) {
@@ -103,9 +91,11 @@ function printCommands(
         } else {
             for (let j = 0; j < mask[i].l; j++) {
                 for (let k = 0; k < mask[i].c; k++) {
-                    print(outputFile, getEchoCommand());
+                    message = getNextMessage();
+                    fileName = getTextFileName();
+                    print(outputFile, getEchoCommand(message, fileName));
                     print(outputFile, getGitAddCommand());
-                    print(outputFile, getCommitMessage(currentDate));
+                    print(outputFile, getCommitMessage(currentDate, message));
                 }
                 currentDate = currentDate.addDays(1);
             }
