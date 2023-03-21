@@ -1,6 +1,5 @@
 "use strict";
 
-const masks = require("./assets/masks");
 const os = require("os");
 const path = require("path");
 
@@ -10,9 +9,6 @@ const tempDir: string = os.tmpdir(); // /tmp
 const DEFAULT_OUTPUT_FILE = path.join(tempDir, "github-commits.sh");
 
 class GithubActivity {
-    static getPredefinedMasks(): object[] {
-        return masks;
-    }
 
     private static instance: GithubActivity | null = null;
 
