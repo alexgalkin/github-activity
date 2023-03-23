@@ -103,3 +103,7 @@ typings/
 .tern-port
 
 run.js
+
+src/
+tsconfig.json
+.vscode

@@ -1,5 +1,9 @@
 # GitHub Activity section adjustment script
 
+>  :wink: :sunglasses: this project is made just for fun; it can be used to convert your activity
+>  graph to the nice looking image :candy:
+>  :monocle_face: Do not use that to fool someone's impression about your activity
+
 ## Description
 
 This module helps you "draw" your own activity section at Github profile.
