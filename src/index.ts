@@ -3,14 +3,15 @@
 const os = require("os");
 const path = require("path");
 
-const commandPrinter = require("./service/command-printer");
+const PrinterSvc = require("./service/command-printer");
 
 const tempDir: string = os.tmpdir(); // /tmp
 const DEFAULT_OUTPUT_FILE = path.join(tempDir, "github-commits.sh");
 
 class GithubActivity {
-
+    
     private static instance: GithubActivity | null = null;
+
 
     public static getInstance(
         mask: [],
@@ -32,6 +33,10 @@ class GithubActivity {
     private outputFile: string = DEFAULT_OUTPUT_FILE;
     private mask: object[] = [];
     private startDate: Date | null = null;
+    private fileNames: string[] = []
+    private messages: string[] = []
+
+    public printerService: any;
 
     private constructor(
         mask: [],
@@ -49,11 +54,21 @@ class GithubActivity {
         if (!mask || mask.length < 1) {
             throw Error("Mask should be defined.");
         }
+        this.printerService = new PrinterSvc();
+    }
+
+    setMessages(messages: string[]) {
+        this.printerService.messages = messages
+    }
+
+    setFileNames(files: string[]) {
+        this.printerService.fileNames = files
     }
 
     printToFile() {
-        commandPrinter(this.mask, this.startDate, this.outputFile);
+        this.printerService.printCommands(this.mask, this.startDate, this.outputFile)
     }
+
 }
 
 module.exports = GithubActivity.getInstance;

@@ -75,3 +75,7 @@ let gh = githubActivity(mask, startDate, '/tmp/commits.sh');
 
 gh.printToFile();
 ```
+
+## Extra settings
+
+You may also define the list of files which can be modified and the list of commit messages you would like to use.
