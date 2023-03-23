@@ -2,6 +2,7 @@
 
 >  :wink: :sunglasses: this project is made just for fun; it can be used to convert your activity
 >  graph to the nice looking image :candy:
+>
 >  :monocle_face: Do not use that to fool someone's impression about your activity
 
 ## Description
@@ -78,4 +79,18 @@ gh.printToFile();
 
 ## Extra settings
 
-You may also define the list of files which can be modified and the list of commit messages you would like to use.
+You may also define the list of files which can be modified and the list of commit messages you would like to use:
+
+```
+
+...
+
+let gh = githubActivity(mask, startDate, '/tmp/commits.sh');
+
+...
+
+gh.setMessages(["MAJOR updates","MINOR update","PATCH"])
+gh.setFileNames(["debug.app.log","app-web.log","notes-app.md"])
+
+gh.printToFile();
+```
