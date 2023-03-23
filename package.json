@@ -1,6 +1,6 @@
 {
   "name": "@halkin/github-activity",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "CLI commands that will help to prepare commits to adjust Github activity",
   "main": "dist/index.js",
   "scripts": {
